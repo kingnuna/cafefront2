@@ -50,30 +50,108 @@ ui 흐름 정의: 스토리 보드 작성 등의 방법으로 ui 흐름 설계
    
    비동기 요청(ajax) 처리 라이브러리
 
-   [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdDetail.js)
+   - get 요청
+  
+     [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdDetail.js)
 
-   axios.put('http://localhost:8081/auth/cafe', {}, {headers:{auth_token:token}, params:{num:num, name:name, price:price}})
-   
-        .then(function(res){//res.status:상태값, res.data:백에서 보낸 데이터
-   
-            if(res.status === 200){
-   
-               if(res.data.flag){
-   
-                  alert('수정 성공');
-   
-                  navigate('/prod/list');
-   
-               }else{
-   
-                  alert('수정 취소');
-   
-               }
-   
+     axios.get('url',{headers:{auth_token:token}})
+     
+        .then(function(res){ //res.status:상태값, res.data:백에서 보낸 데이터
+     
+            if(res.status===200){
+     
+                //정상처리
+     
             }else{
-   
-               alert('비정상 응답');
-   
+     
+                //에러처리
+     
+            }
+     
+        })
+
+   - post 요청
+
+        [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/member/Join.js)
+
+        axios.post('url',{},{params:{id:id, pwd:pwd, name:name,email:email,type:type}})
+     
+        .then(function(res){ //res.status:상태값, res.data:백에서 보낸 데이터
+     
+             if(res.status===200){
+     
+                //정상처리
+     
+            }else{
+     
+                //에러처리
+     
             }
    
          })
+
+   - post multipart 요청
+  
+        [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdAdd.js)
+  
+        let fdata = new FormData(document.getElementById('addf')); 
+
+        axios.post('url',fdata, {headers:{auth_token:token, "Content-Type":"multipart/form-data"}})
+     
+        .then(function(res){ //res.status:상태값, res.data:백에서 보낸 데이터
+     
+             if(res.status===200){
+     
+                //정상처리
+     
+            }else{
+     
+                //에러처리
+     
+            }
+   
+         })
+
+   - put 요청
+
+   [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdDetail.js)
+
+   axios.put('url', {}, {headers:{auth_token:token}, params:{num:num, name:name, price:price}})
+   
+        .then(function(res){//res.status:상태값, res.data:백에서 보낸 데이터
+   
+             if(res.status===200){
+     
+                //정상처리
+     
+            }else{
+     
+                //에러처리
+     
+            }
+   
+         })
+
+   - delete 요청
+
+      axios.delete('url/delid', {}, {headers:{auth_token:token}})
+   
+        .then(function(res){//res.status:상태값, res.data:백에서 보낸 데이터
+   
+             if(res.status===200){
+     
+                //정상처리
+     
+            }else{
+     
+                //에러처리
+     
+            }
+   
+         })
+
+3. back end 에서 이미지 받아 출력
+
+   [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdList.js)
+
+   /< img src={'url'+item.fname} className="imgstyle" />
