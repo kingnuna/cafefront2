@@ -36,10 +36,44 @@ ui 흐름 정의: 스토리 보드 작성 등의 방법으로 ui 흐름 설계
    - 라우터 사용
      등록한 url로 화면 전환
 
-     [App.js](https://github.com/kingnuna/cafefront2/blob/master/src/App.js)
+     * 태그로 이동 [App.js](https://github.com/kingnuna/cafefront2/blob/master/src/App.js)
 
-     ![router2](https://github.com/user-attachments/assets/55ff61ea-89d7-4259-826e-1047bd56ba8a) 
+     ![router2](https://github.com/user-attachments/assets/55ff61ea-89d7-4259-826e-1047bd56ba8a)
+  
+     * js로 이동 [Login.js](https://github.com/kingnuna/cafefront2/blob/master/src/components/member/Login.js)
 
-   
+     const navigate = useNavigate();
+
+     navigate('/prod/list');
+     
 2. axios
-   비동기 요청(ajax) 처리 라이브러리 
+   
+   비동기 요청(ajax) 처리 라이브러리
+
+   [소스파일보기](https://github.com/kingnuna/cafefront2/blob/master/src/components/prod/ProdDetail.js)
+
+   axios.put('http://localhost:8081/auth/cafe', {}, {headers:{auth_token:token}, params:{num:num, name:name, price:price}})
+   
+        .then(function(res){//res.status:상태값, res.data:백에서 보낸 데이터
+   
+            if(res.status === 200){
+   
+               if(res.data.flag){
+   
+                  alert('수정 성공');
+   
+                  navigate('/prod/list');
+   
+               }else{
+   
+                  alert('수정 취소');
+   
+               }
+   
+            }else{
+   
+               alert('비정상 응답');
+   
+            }
+   
+         })
