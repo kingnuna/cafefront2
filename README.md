@@ -20,3 +20,20 @@ ui 흐름 정의: 스토리 보드 작성 등의 방법으로 ui 흐름 설계
 
 #### 필요 기술
 
+1. router
+ 
+   url 경로와 컴포넌트를 맵핑하여 화면 전환 기능 제공
+   
+   - 설치: npm install react-router-dom
+   - 라우터 등록
+  
+     url 경로와 컴포넌트를 맵핑
+     
+     [Router.js](https://github.com/kingnuna/cafefront2/blob/master/src/Router.js)
+   
+     
+     
+   - 라우터 사용
+   
+2. axios
+   비동기 요청(ajax) 처리 라이브러리 
