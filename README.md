@@ -3,7 +3,7 @@
 블로그 플랫폼의 기능들을 back end와 front end로 나누어 개발해 본다
 
 * back end: spring boot restful api
-   => backapp
+   => [backapp](https://github.com/kingnuna/backapp)
    
 * front end: react 
    => cafefront2
